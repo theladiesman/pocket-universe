@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Your Pocket Universe</title>
+  <title>Pocket Universe</title>
   <style>
     body {
       margin: 0;
-      background: linear-gradient(#000011, #1a1a40);
+      background: #000;
       color: #fff;
       font-family: 'Segoe UI', sans-serif;
       overflow: hidden;
@@ -28,16 +28,24 @@
 
     .object {
       position: absolute;
-      padding: 10px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
       cursor: pointer;
+      font-size: 1.2em;
+      animation: float 6s ease-in-out infinite;
       transition: transform 0.2s;
     }
 
     .object:hover {
       transform: scale(1.1);
       background: rgba(255,255,255,0.15);
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
     }
 
     .popup {
@@ -47,12 +55,12 @@
       width: 80%;
       max-width: 500px;
       transform: translate(-50%, -50%);
-      background: #222244;
+      background: #1c1c2e;
       padding: 20px;
       border-radius: 12px;
       display: none;
       z-index: 100;
-      box-shadow: 0 0 10px #999;
+      box-shadow: 0 0 15px #999;
     }
 
     .popup h2 {
@@ -70,23 +78,41 @@
     }
 
     .stars {
-      position: absolute;
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: url('https://i.imgur.com/Vz7K2U7.png') repeat;
-      animation: twinkle 10s linear infinite;
-      z-index: -1;
+      background: black url('https://cdn.pixabay.com/photo/2013/07/18/10/56/space-164413_1280.jpg') repeat;
+      background-size: cover;
+      z-index: -2;
+      animation: twinkle 200s linear infinite;
+      opacity: 0.5;
     }
 
     @keyframes twinkle {
       from { background-position: 0 0; }
-      to { background-position: 1000px 1000px; }
+      to   { background-position: 10000px 5000px; }
+    }
+
+    audio {
+      display: none;
+    }
+
+    a {
+      color: #99ccff;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <div class="stars"></div>
   <h1>Welcome to Your Pocket Universe</h1>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/22/audio_b655178937.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <div class="container">
     <div class="object" style="top: 150px; left: 20%;" onclick="openPopup('letter')">✉ Letter</div>
@@ -111,7 +137,7 @@
   <div id="memory" class="popup">
     <div class="close" onclick="closePopup('memory')">✖</div>
     <h2>You Were Here</h2>
-    <p>Remember that night we stayed up talking, and you told me the thing you were afraid to say? That moment is a star to me now. It’ll never go out.</p>
+    <p>remember that day when I came to your house and you said the thing that started this all? That moment is a star to me now. It'll never go out.</p>
   </div>
 
   <div id="moon" class="popup">
