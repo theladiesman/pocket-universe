@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Pocket Universe</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(#000011, #1a1a40);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 2em;
+      color: #ccccff;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .object {
+      position: absolute;
+      padding: 10px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .object:hover {
+      transform: scale(1.1);
+      background: rgba(255,255,255,0.15);
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 80%;
+      max-width: 500px;
+      transform: translate(-50%, -50%);
+      background: #222244;
+      padding: 20px;
+      border-radius: 12px;
+      display: none;
+      z-index: 100;
+      box-shadow: 0 0 10px #999;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #ccddff;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 18px;
+      cursor: pointer;
+      color: #aaa;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/Vz7K2U7.png') repeat;
+      animation: twinkle 10s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes twinkle {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <h1>Welcome to Your Pocket Universe</h1>
+
+  <div class="container">
+    <div class="object" style="top: 150px; left: 20%;" onclick="openPopup('letter')">✉ Letter</div>
+    <div class="object" style="top: 280px; left: 65%;" onclick="openPopup('echo')">🎧 Echo</div>
+    <div class="object" style="top: 420px; left: 30%;" onclick="openPopup('memory')">🌟 Memory Star</div>
+    <div class="object" style="top: 100px; left: 75%;" onclick="openPopup('moon')">🌙 Moon</div>
+  </div>
+
+  <!-- Popups -->
+  <div id="letter" class="popup">
+    <div class="close" onclick="closePopup('letter')">✖</div>
+    <h2>A Letter From Me</h2>
+    <p>You don’t have to be okay right now. You just have to know that I love you — right here, exactly as you are. You are not alone.</p>
+  </div>
+
+  <div id="echo" class="popup">
+    <div class="close" onclick="closePopup('echo')">✖</div>
+    <h2>When the World Is Too Loud</h2>
+    <p><a href="https://open.spotify.com/playlist/..." target="_blank">Click here for a playlist</a> to slow down your heartbeat and soften the edges.</p>
+  </div>
+
+  <div id="memory" class="popup">
+    <div class="close" onclick="closePopup('memory')">✖</div>
+    <h2>You Were Here</h2>
+    <p>Remember that night we stayed up talking, and you told me the thing you were afraid to say? That moment is a star to me now. It’ll never go out.</p>
+  </div>
+
+  <div id="moon" class="popup">
+    <div class="close" onclick="closePopup('moon')">✖</div>
+    <h2>Rest Here</h2>
+    <p>Close your eyes. Breathe. You are safe in this small corner of the universe we made together.</p>
+  </div>
+
+  <script>
+    function openPopup(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function closePopup(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+  </script>
+</body>
+</html>
